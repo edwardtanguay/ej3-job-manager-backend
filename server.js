@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { JobSource } from './models/JobSource.js';
 import cors from 'cors';
+import jwt from 'jsonwebtoken';
 
 const user = {
     id: 1,
@@ -43,8 +44,11 @@ app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     if (username === 'hans' && password === '123') {
-        res.json({
-            user
+        jwt.sign({ user }, 'secretkey', (err, token) => {
+            res.json({
+				user,
+				token
+            });
         });
     } else {
         res.sendStatus(500);
