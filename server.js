@@ -31,6 +31,10 @@ app.get('/job-sources', async (req, res) => {
 	res.status(200).json(jobSources);
 });
 
+app.post('/login', async (req, res) => {
+	res.status(200).json({"username": "hans"});
+});
+
 app.listen(port, () => {
     console.log(`Listening on http://localhost:${port}`);
 });
