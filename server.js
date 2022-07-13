@@ -64,7 +64,7 @@ app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     if (username === 'hans' && password === '123') {
-        jwt.sign({ user }, 'secretkey', (err, token) => {
+	jwt.sign({ user }, 'secretkey', { expiresIn: '20s' }, (err, token) => {
             res.json({
 				user,
 				token
