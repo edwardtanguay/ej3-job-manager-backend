@@ -1,25 +1,23 @@
 # ejt-job-manager-backend
 
 - **What we will build**
-	- a useful, functional full-stack MERN site which allows you to collect, save and display information about job leads 
-		- this is the beginning of a project which will become a site that managers your job seeking process
-	- data will be saved in a database at your MongoDB Atlas database and will access your backend API at Heroku
-	- frontend will be at Netlify and will access your API at Heroku
-	- in this version, this site will be read-only
-	- you will have one local directory for the project called **ejt-job-manager-project** where `ejt` are your initials (don't use `ejt` since those are my initials)
-		- inside this folder you will have two projects:
-			- **ejt-job-manager-backend**
-				- this will also be the name of your
-					- backend repository at GitHub
-					- your app at Heroku
-				- Heroku app names must be 30 characters or less 
-				- the URL to your backend API will be: `http://ejt-job-manager-backend.herokuapp.com`
-			- **ejt-job-manager**
-				- this will be the name of your
-					- frontend repository at GitHub
-					- your app at Netlify
-				- your Netlify URL will be called http://ejt-job-manager.netlify.app
-					- it doesn't have the word `frontend` in it since will be an outward-facing URL that you will give to other people  in order for them to log into your site
+	- we will extend this project in which we built a full-stack MERN app running at Netlify (frontend), Heroku (backend) connecting to an online database (MongoDB Atlas): 
+		- [Create full-stack MERN site published at Heroku/Netlify saving data to MongoDB Atlas](https://edwardtanguay.netlify.app/howtos?id=588)
+	- the final state of this project was that we could visit the site at Netlify, which fetched data from the Heroku API, which in turn fetched data from MongoDB Atlas:##tehonlinefinished
+	- the task we will accomplish in this howto is:
+		- when a user comes to this page, they are not allowed to see the job sources 
+		- instead they see a login form
+		- if they login successfully, they able to view the information for 20 seconds
+		- after 20 seconds are expired, they are logged out and they have to log in again to see the information
+			- (20 seconds is of course for demonstration purposes, one can change this to any length of time later and keep a user logged in when they movement on the site, but the important aspect here is that our JWT tokens at some point expire which increases the security of our site)
+			- after implementing login, the site looks like this:##howlookforsjwt
+	- note that after successful login, **the user can refresh the page and stay logged in**
+		- this is accomplished via a **maintain-login** route which sends the JWT token back
+	- we will keep this site one page for the time being
+		- the user object returned from a successful login will be saved in a variable in React
+		- if the user object exists, only then will another fetch be called to get the sensitive data, in our case the job sources
 - **What we will use:**
-	- Node/Express and MongoDB Atlas will be used for the backend
-	- React (Vite) will be used for the frontend
+	- Node/React
+	- JWT
+	- Postman
+	- VSCode REST Client
